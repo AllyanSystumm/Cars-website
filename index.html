@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Selling Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-toggle">☰</div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#cars">Cars</a></li>
+                <li><a href="#wishlist">Wishlist</a></li>
+                <li><a href="#cart">Cart</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#signup">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Car Filter & Sorting -->
+    <section class="filter-section">
+        <label for="brand-filter">Filter by Brand:</label>
+        <select id="brand-filter" onchange="filterCarsByBrand()">
+            <option value="All">All</option>
+            <option value="Ford">Ford</option>
+            <option value="Tesla">Tesla</option>
+            <option value="BMW">BMW</option>
+            <option value="Audi">Audi</option>
+            <option value="Mercedes">Mercedes</option>
+        </select>
+
+        <label for="price-sort">Sort by Price:</label>
+        <select id="price-sort" onchange="sortCarsByPrice()">
+            <option value="None">None</option>
+            <option value="low-to-high">Price Low to High</option>
+            <option value="high-to-low">Price High to Low</option>
+        </select>
+    </section>
+
+    <!-- Search -->
+    <section class="search-section">
+        <input type="text" id="search-input" placeholder="Search cars..." oninput="handleSearchInput()">
+    </section>
+
+    <!-- Car Listing -->
+    <section id="cars" class="car-grid">
+        <!-- Car 1 -->
+        <div class="car-item" data-brand="Ford" data-price="30000">
+            <img src="tesla.jpg" alt="Ford Mustang">
+            <h3>Ford Mustang</h3>
+            <p>$30,000</p>
+            <button class="buy-btn" onclick="addToCart(1)">Add to Cart</button>
+            <button class="wishlist-btn" onclick="addToWishlist(1)">Add to Wishlist</button>
+        </div>
+
+        <!-- Car 2 -->
+        <div class="car-item" data-brand="Tesla" data-price="80000">
+            <img src="images/tesla_model_s.jpg" alt="Tesla Model S">
+            <h3>Tesla Model S</h3>
+            <p>$80,000</p>
+            <button class="buy-btn" onclick="addToCart(2)">Add to Cart</button>
+            <button class="wishlist-btn" onclick="addToWishlist(2)">Add to Wishlist</button>
+        </div>
+
+        <!-- Car 3 -->
+        <div class="car-item" data-brand="BMW" data-price="150000">
+            <img src="images/bmw_i8.jpg" alt="BMW i8">
+            <h3>BMW i8</h3>
+            <p>$150,000</p>
+            <button class="buy-btn" onclick="addToCart(3)">Add to Cart</button>
+            <button class="wishlist-btn" onclick="addToWishlist(3)">Add to Wishlist</button>
+        </div>
+
+        <!-- Car 4 -->
+        <div class="car-item" data-brand="Audi" data-price="200000">
+            <img src="images/audi_r8.jpg" alt="Audi R8">
+            <h3>Audi R8</h3>
+            <p>$200,000</p>
+            <button class="buy-btn" onclick="addToCart(4)">Add to Cart</button>
+            <button class="wishlist-btn" onclick="addToWishlist(4)">Add to Wishlist</button>
+        </div>
+    </section>
+
+    <!-- Wishlist -->
+    <section id="wishlist">
+        <h2>Your Wishlist</h2>
+        <div class="wishlist-items"></div>
+    </section>
+
+    <!-- Cart -->
+    <section id="cart">
+        <h2>Your Cart</h2>
+        <div class="cart-items"></div>
+        <p class="cart-total">Total: $0</p>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form onsubmit="return validateContactForm()">
+            <input type="text" id="contact-name" placeholder="Your Name">
+            <input type="email" id="contact-email" placeholder="Your Email">
+            <textarea id="contact-message" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Sign-up Form -->
+    <section id="signup">
+        <h2>Sign Up</h2>
+        <form onsubmit="return validateSignUpForm()">
+            <input type="text" id="sign-up-username" placeholder="Username">
+            <input type="email" id="sign-up-email" placeholder="Email">
+            <input type="password" id="sign-up-password" placeholder="Password">
+            <span id="toggle-password-icon" onclick="togglePasswordVisibility()">👁</span>
+            <button type="submit">Sign Up</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
